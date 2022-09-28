@@ -6,15 +6,11 @@ const productId = getParam('product');
 const product = new productDetails(productId, dataSource);
 product.init();
 
-
-
 let products = [];
 
 function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
-
-
 
 getProductsData();
 // add listener to Add to Cart button
