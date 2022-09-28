@@ -1,6 +1,8 @@
 import ProductData from './productData.js';
+import { getParam } from './utils.js';
 const dataSource = new ProductData('tents');
-console.log(dataSource.getData());
+const productId = getParam('product');
+console.log(dataSource.findProductById(productId));
 
 let products = [];
 
