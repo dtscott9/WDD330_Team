@@ -1,3 +1,5 @@
+
+
 export default class productDetails {
     constructor(productId, dataSource){
         this.productId = productId;
@@ -14,6 +16,6 @@ export default class productDetails {
       }
 
     renderProductDetails() {
-
+        
     }
 }
