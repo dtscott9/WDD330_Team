@@ -14,10 +14,7 @@ function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
-// add to cart button event handler
-function addToCart(e) {
-  setLocalStorage("so-cart", products);
-}
+
 
 getProductsData();
 // add listener to Add to Cart button

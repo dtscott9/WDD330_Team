@@ -7,8 +7,9 @@ export default class productDetails {
         this.dataSource = dataSource;
     }
 
-    init() {
-
+    async init() {
+        document.getElementById('addToCart')
+        .addEventListener('click', this.addToCart.bind(this));
     }
 
     addToCart(e) {
@@ -16,6 +17,6 @@ export default class productDetails {
       }
 
     renderProductDetails() {
-        
+
     }
 }
