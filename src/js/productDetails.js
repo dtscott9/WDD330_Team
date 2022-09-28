@@ -9,11 +9,11 @@ export default class productDetails {
 
     }
 
-    addToCart() {
-
-    }
+    addToCart(e) {
+        setLocalStorage("so-cart", products);
+      }
 
     renderProductDetails() {
-        
+
     }
 }
