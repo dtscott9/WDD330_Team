@@ -1,8 +1,8 @@
+import ProductData from './productData.js';
 import productDetails from './productDetails.js';
-import productData from './productData.js';
-import { getParams } from './utils.js';
-var dataSource = new productData('tents');
-const productId = getParams('product');
+import { getParam } from './utils.js';
+const productId = getParam('product');
+const dataSource = new ProductData('tents');
 const product = new productDetails(productId, dataSource);
 // product.init();
 
@@ -13,5 +13,6 @@ function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
 
+getData();
 // add listener to Add to Cart button
 document.getElementById("addToCart").addEventListener("click", addToCart);
