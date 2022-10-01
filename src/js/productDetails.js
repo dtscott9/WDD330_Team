@@ -23,7 +23,15 @@ export default class productDetails {
   }
 
   addToCart() {
-    setLocalStorage("so-cart", products);
+    this.generateCartAnimation()
+    // setLocalStorage("so-cart", products);
+  }
+
+  generateCartAnimation() {
+    
+    const cart = document.querySelector(".cart>a>svg");
+    cart.classList.add("wobble");
+    window.setTimeout(() => cart.classList.remove("wobble"), 1000)
   }
 
   renderProductDetails() {
