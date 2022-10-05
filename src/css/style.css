@@ -109,6 +109,22 @@ button {
   fill: gray;
 }
 
+.cart_notify {
+  margin: 0;
+  background-color: rgb(214, 61, 61);
+  padding: 5px;
+  width: 10px;
+  border-radius: 50%;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  top: -19px;
+  left: -15px;
+  font-size: 10px;
+  color: white;
+  display: none;
+}
+
 @keyframes wobble {
   0% { transform: translateX(0%); } 
   15% { transform: translateX(-25%) rotate(-5deg); } 

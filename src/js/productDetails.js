@@ -1,6 +1,8 @@
 import { setLocalStorage } from "./utils.js";
 
 
+
+let products = localStorage.getItem("product name") || []
 export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -24,15 +26,17 @@ export default class productDetails {
 
   addToCart() {
     this.generateCartAnimation()
+    localStorage.setItem("product name", this.product.Name)
     // setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
     
-    const cart = document.querySelector(".cart>a>svg");
+    const cart = document.querySelector(".cart");
     cart.classList.add("wobble");
     window.setTimeout(() => cart.classList.remove("wobble"), 1000)
   }
+
 
   renderProductDetails() {
     return `<section class="product-detail">
