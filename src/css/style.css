@@ -104,6 +104,7 @@ button {
 
 .cart svg {
   width: 25px;
+  z-index: 0;
 }
 .cart:hover svg {
   fill: gray;
@@ -123,6 +124,7 @@ button {
   font-size: 10px;
   color: white;
   display: none;
+  z-index: 1;
 }
 
 @keyframes wobble {

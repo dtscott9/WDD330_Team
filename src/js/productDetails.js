@@ -1,8 +1,6 @@
 import { setLocalStorage } from "./utils.js";
 
 
-
-let products = localStorage.getItem("product name") || []
 export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -10,7 +8,7 @@ export default class productDetails {
     this.dataSource = dataSource;
   }
 
-  products = [];
+  products = JSON.parse(localStorage.getItem("product name")) || [];
 
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -26,8 +24,9 @@ export default class productDetails {
 
   addToCart() {
     this.generateCartAnimation()
-    localStorage.setItem("product name", this.product.Name)
-    // setLocalStorage("so-cart", products);
+    products.push(this.product.Name)
+    localStorage.setItem("product name", JSON.stringify(products))
+    //setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
