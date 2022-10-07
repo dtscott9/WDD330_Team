@@ -24,7 +24,9 @@ export default class ProductList {
         template.querySelector('.product-card__price').textContent += product.FinalPrice;  
         return template;
     }
-
+ 
+    // Filter here
+    
     renderList(list) {
         // make sure the list is empty
         this.listElement.innerHTML = '';
