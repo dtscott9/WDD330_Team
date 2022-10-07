@@ -1,4 +1,4 @@
-import ProductData from "./productData";
+
 
 export default class ProductList {
     constructor(category, dataSource, listElement) {
@@ -26,8 +26,5 @@ export default class ProductList {
         const hydratedTemplate = this.prepareTemplate(clone, product);
         this.listElement.appendChild(hydratedTemplate);
         })
-    }
-
-
-
+    } 
 }
