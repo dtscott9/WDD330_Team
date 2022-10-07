@@ -26,7 +26,4 @@ export default class ProductList {
         this.listElement.appendChild(hydratedTemplate);
         })
     } 
-
-
-    
 }
