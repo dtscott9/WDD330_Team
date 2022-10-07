@@ -20,4 +20,12 @@ export default class ProductList {
     prepareTemplate() {
 
     }
+
+    renderList(list) {
+        const template = document.querySelector(".product-template");
+        list.map((product) => {
+            const templateClone = template.cloneNode(true);
+            this.listElement.appendChild(templateClone);
+        })
+    }
 }
