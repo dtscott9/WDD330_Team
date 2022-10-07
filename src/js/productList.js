@@ -5,6 +5,7 @@ export default class ProductList {
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = listElement;
+        this.init()
     }
 
     async init() {
@@ -12,15 +13,10 @@ export default class ProductList {
         this.renderList(list);
     }
 
-<<<<<<< HEAD
-    prepareTemplate() {
-
-=======
     prepareTemplate(template, product) {
         template.querySelector('a').href +=  product.Id;
         // fill in the rest of the data here... 
         return template;
->>>>>>> 82925f9f6e2b6288fc145d4880887c92ef6f8f48
     }
 
     renderList(list) {
