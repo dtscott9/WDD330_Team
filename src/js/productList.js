@@ -12,13 +12,10 @@ export default class ProductList {
         this.renderList(list);
     }
 
-
-
-
-
-
-    prepareTemplate() {
-
+    prepareTemplate(template, product) {
+        template.querySelector('a').href +=  product.Id;
+        // fill in the rest of the data here... 
+        return template;
     }
 
     renderList(list) {
