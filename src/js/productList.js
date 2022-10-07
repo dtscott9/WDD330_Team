@@ -15,7 +15,17 @@ export default class ProductList {
 
     prepareTemplate(template, product) {
         template.querySelector('a').href +=  product.Id;
-        // fill in the rest of the data here... 
+        const img = template.querySelector(".card_image");
+        img.setAttribute("src", product.Image);
+
+        const brand = template.querySelector(".card__brand");
+        brand.textContent = product.Brand.Name;
+
+        const name = template.querySelector(".card__name");
+        name.textContent = product.Name;
+
+        const price = template.querySelector(".product-card__price");
+        price.textContent = product.ListPrice;
         return template;
     }
 
