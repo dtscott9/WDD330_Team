@@ -1,4 +1,4 @@
-import ProductData from "./productData";
+
 
 export default class ProductList {
     constructor(category, dataSource, listElement) {
