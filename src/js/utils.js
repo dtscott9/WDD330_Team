@@ -27,3 +27,7 @@ export function getParam(param) {
   const urlParams = new URLSearchParams(queryString);
   return urlParams.get(param);
 }
+
+export function renderListWithTemplate(template, parentElement, list, callback) {
+
+}
