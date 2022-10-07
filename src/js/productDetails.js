@@ -26,7 +26,7 @@ export default class productDetails {
     this.generateCartAnimation()
     products.push(this.product.Name)
     localStorage.setItem("product name", JSON.stringify(products))
-    //setLocalStorage("so-cart", products);
+    setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
