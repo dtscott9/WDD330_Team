@@ -15,8 +15,12 @@ export default class ProductList {
 
     prepareTemplate(template, product) {
         template.querySelector('a').href +=  product.Id;
-        // fill in the rest of the data here... 
-        
+        // fill in the rest of the data here...
+        template.querySelector('img').src = product.Image;
+        template.querySelector('img').alt += product.Name;
+        template.querySelector('.card__brand').textContent = product.Brand.Name;
+        template.querySelector('.card__name').textContent = product.NameWithoutBrand;
+        template.querySelector('.product-card__price').textContent += product.FinalPrice;  
         return template;
     }
 
