@@ -12,15 +12,26 @@ export default class ProductList {
         this.renderList(list);
     }
 
+<<<<<<< HEAD
     prepareTemplate() {
 
+=======
+    prepareTemplate(template, product) {
+        template.querySelector('a').href +=  product.Id;
+        // fill in the rest of the data here... 
+        return template;
+>>>>>>> 82925f9f6e2b6288fc145d4880887c92ef6f8f48
     }
 
     renderList(list) {
-        const template = document.querySelector(".product-template");
-        list.map((product) => {
-            const templateClone = template.cloneNode(true);
-            this.listElement.appendChild(templateClone);
+        const template = document.getElementById('product-card-template');
+        list.forEach(product => {
+        const clone = template.content.cloneNode(true);
+        const hydratedTemplate = this.prepareTemplate(clone, product);
+        this.listElement.appendChild(hydratedTemplate);
         })
     }
+
+
+
 }
