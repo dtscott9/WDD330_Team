@@ -10,4 +10,12 @@ export default class ProductList {
     async init() {
         const list = await this.dataSource.getData()
     }
+
+    renderList(list) {
+        const template = document.querySelector(".product-template");
+        list.map((product) => {
+            const templateClone = template.cloneNode(true);
+            this.listElement.appendChild(templateClone);
+        })
+    }
 }
