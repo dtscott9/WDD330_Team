@@ -28,11 +28,10 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
-export function renderListWithTemplate(template, parentElement, list, callback) {
-  const template = document.getElementById('product-card-template');
+export function renderListWithTemplate(template, parent, list, callback) {
   list.forEach(product => {
     const clone = template.content.cloneNode(true);
-    const hydratedTemplate = this.prepareTemplate(clone, product);
-    this.listElement.appendChild(hydratedTemplate);
+    const templateWithData = callback(clone, product);
+    parent.appendChild(templateWithData);
   })
 }
