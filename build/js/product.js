@@ -1,1 +1,1 @@
-import a from"./productData.js";const e=new a("tents");console.log(e.getData());let c=[];function r(t,o){localStorage.setItem(t,JSON.stringify(o))}function d(t){r("so-cart",c)}getProductsData(),document.getElementById("addToCart").addEventListener("click",d);
+import r from"./productData.js";import c from"./productDetails.js";import{getParam as a}from"./utils.js";const i=new r("tents"),n=a("product"),e=new c(n,i),t=localStorage.length,o=document.querySelector(".cart_notify");t>0&&(o.innerHTML=t,o.style.display="initial"),e.init();
