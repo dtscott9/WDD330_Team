@@ -12,11 +12,6 @@ export default class ProductList {
         this.renderList(list);
     }
 
-
-
-
-
-
     prepareTemplate() {
 
     }
