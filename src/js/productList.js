@@ -8,7 +8,25 @@ export default class ProductList {
     }
 
     async init() {
-        const list = await this.dataSource.getData()
+        const list = await this.dataSource.getData();
+        this.renderList(list);
+    }
+
+
+
+
+
+
+    prepareTemplate() {
+
+    }
+
+    renderList(list) {
+        const template = document.querySelector(".product-template");
+        list.map((product) => {
+            const templateClone = template.cloneNode(true);
+            this.listElement.appendChild(templateClone);
+        })
     }
 
 
