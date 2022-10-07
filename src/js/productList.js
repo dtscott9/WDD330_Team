@@ -25,7 +25,7 @@ export default class ProductList {
         const hydratedTemplate = this.prepareTemplate(clone, product);
         this.listElement.appendChild(hydratedTemplate);
         })
-    }
+    } 
 
 
     
