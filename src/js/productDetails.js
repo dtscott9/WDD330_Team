@@ -17,20 +17,17 @@ export default class productDetails {
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+    document.querySelector("#addToCart").addEventListener("click", this.addToCart);
   }
 
   addToCart() {
-    this.generateCartAnimation()
-    products.push(this.product.Name)
-    localStorage.setItem("product name", JSON.stringify(products))
+    this.generateCartAnimation;
+    this.products.push(this.product.Name);
+    localStorage.setItem("product name", JSON.stringify(products));
     setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
-    
     const cart = document.querySelector(".cart");
     cart.classList.add("wobble");
     window.setTimeout(() => cart.classList.remove("wobble"), 1000)
