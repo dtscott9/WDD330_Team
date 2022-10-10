@@ -7,8 +7,6 @@ export default class productDetails {
     this.dataSource = dataSource;
   }
 
-  //products = JSON.parse(localStorage.getItem("product name")) || [];
-
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     // once we have the product details we can render out the HTML
@@ -22,10 +20,8 @@ export default class productDetails {
 
   addToCart() {
     this.generateCartAnimation;
-    //this.products.push(this.product.Name);
     console.log(this.product.Name);
     setLocalStorage("product name", JSON.stringify(this.product.Name));
-    //setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
@@ -33,7 +29,6 @@ export default class productDetails {
     cart.classList.add("wobble");
     window.setTimeout(() => cart.classList.remove("wobble"), 1000)
   }
-
 
   renderProductDetails() {
     return `<section class="product-detail">
