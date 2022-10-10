@@ -18,8 +18,8 @@ export default class productDetails {
   }
 
   addToCart() {
-    this.generateCartAnimation;
     setLocalStorage("product name", JSON.stringify(this.product.Name));
+    this.generateCartAnimation();
   }
 
   generateCartAnimation() {
