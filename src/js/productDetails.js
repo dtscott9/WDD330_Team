@@ -1,6 +1,5 @@
 import { setLocalStorage } from "./utils.js";
 
-
 export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -8,7 +7,7 @@ export default class productDetails {
     this.dataSource = dataSource;
   }
 
-  products = JSON.parse(localStorage.getItem("product name")) || [];
+  //products = JSON.parse(localStorage.getItem("product name")) || [];
 
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -16,15 +15,17 @@ export default class productDetails {
     // once the HTML is rendered we can add a listener to Add to Cart button
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     this.product = await this.dataSource.findProductById(this.productId);
+    console.log(this.product);
     document.querySelector("main").innerHTML = this.renderProductDetails();
-    document.querySelector("#addToCart").addEventListener("click", this.addToCart);
+    document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
   }
 
   addToCart() {
     this.generateCartAnimation;
-    this.products.push(this.product.Name);
-    localStorage.setItem("product name", JSON.stringify(products));
-    setLocalStorage("so-cart", products);
+    //this.products.push(this.product.Name);
+    console.log(this.product.Name);
+    setLocalStorage("product name", JSON.stringify(this.product.Name));
+    //setLocalStorage("so-cart", products);
   }
 
   generateCartAnimation() {
