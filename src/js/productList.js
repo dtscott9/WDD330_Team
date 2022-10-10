@@ -5,6 +5,7 @@ export default class ProductList {
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = listElement;
+        this.products = [];
         this.init()
     }
 
@@ -23,13 +24,14 @@ export default class ProductList {
         template.querySelector('.product-card__price').textContent += product.FinalPrice;  
         return template;
     }
-
+ 
+    // Filter here
+    
     renderList(list) {
+        // make sure the list is empty
+        this.listElement.innerHTML = '';
+        //get the template
         const template = document.getElementById('product-card-template');
-        list.forEach(product => {
-        const clone = template.content.cloneNode(true);
-        const hydratedTemplate = this.prepareTemplate(clone, product);
-        this.listElement.appendChild(hydratedTemplate);
-        })
+        renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
     } 
 }
