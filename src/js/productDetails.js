@@ -8,7 +8,7 @@ export default class productDetails {
     this.dataSource = dataSource;
   }
 
-  products = JSON.parse(localStorage.getItem("product name")) || [];
+
 
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -24,9 +24,9 @@ export default class productDetails {
 
   addToCart() {
     this.generateCartAnimation()
-    products.push(this.product.Name)
-    localStorage.setItem("product name", JSON.stringify(products))
-    setLocalStorage("so-cart", products);
+    //products.push(this.product.Name)
+    localStorage.setItem("product name", JSON.stringify(this.product.Name))
+ 
   }
 
   generateCartAnimation() {
