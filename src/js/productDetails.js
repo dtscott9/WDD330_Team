@@ -1,14 +1,11 @@
 import { setLocalStorage } from "./utils.js";
 
-
 export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
     this.product = {};
     this.dataSource = dataSource;
   }
-
-
 
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
@@ -17,16 +14,12 @@ export default class productDetails {
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addToCart.bind(this));
+    document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
   }
 
   addToCart() {
-    this.generateCartAnimation()
-    //products.push(this.product.Name)
-    localStorage.setItem("product name", (this.product.Name))
- 
+    this.generateCartAnimation;
+    setLocalStorage("product name", JSON.stringify(this.product.Name));
   }
 
   generateCartAnimation() {
@@ -35,7 +28,6 @@ export default class productDetails {
     cart.classList.add("wobble");
     window.setTimeout(() => cart.classList.remove("wobble"), 1000)
   }
-
 
   renderProductDetails() {
     return `<section class="product-detail">
