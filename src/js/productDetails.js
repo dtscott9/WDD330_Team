@@ -23,6 +23,7 @@ export default class productDetails {
   }
 
   generateCartAnimation() {
+    
     const cart = document.querySelector(".cart");
     cart.classList.add("wobble");
     window.setTimeout(() => cart.classList.remove("wobble"), 1000)
