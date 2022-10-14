@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./utils.js";
+import { setLocalStorage, getLocalStorage } from "./utils.js";
 
 export default class productDetails {
   constructor(productId, dataSource) {
@@ -18,7 +18,23 @@ export default class productDetails {
   }
 
   addToCart() {
-    setLocalStorage("product name", JSON.stringify(this.product.Name));
+     // to fix the cart we need to get anything that is in the cart already.
+     let cartContents = getLocalStorage('so-cart');
+     //check to see if there was anything there
+     if(!cartContents){
+       cartContents = [];
+     }
+     // then add the current product to the list
+     cartContents.push(this.product);
+     setLocalStorage('so-cart', cartContents);
+    //setLocalStorage("product name", JSON.stringify(this.product.Name));
+    const productCount = cartContents.length;
+    const cartNotify = document.querySelector(".cart_notify");
+    if (productCount > 0)
+    {
+      cartNotify.innerHTML = productCount;
+      cartNotify.style.display = "initial";
+    }
     this.generateCartAnimation();
   }
 
