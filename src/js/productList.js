@@ -5,8 +5,8 @@ export default class ProductList {
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = listElement;
-        this.products = [];
-        this.init()
+        //this.products = [];
+        //this.init()
     }
 
     async init() {
