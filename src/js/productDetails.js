@@ -15,6 +15,7 @@ export default class productDetails {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
     document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
+    setLocalStorage();
   }
 
   addToCart() {
@@ -36,6 +37,7 @@ export default class productDetails {
       cartNotify.style.display = "initial";
     }
     this.generateCartAnimation();
+    setLocalStorage("so-cart", this.product);
   }
 
   generateCartAnimation() {

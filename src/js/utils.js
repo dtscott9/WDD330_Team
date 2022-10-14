@@ -14,12 +14,34 @@ export function qs(selector, parent = document) {
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
 // retrieve data from localstorage
+
+
+
+
+
 export function getLocalStorage(key) {
+
   return JSON.parse(localStorage.getItem(key));
+
 }
+
+
+
 // save data to local storage
 export function setLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
+  let cartContents = getLocalStorage(key);
+  if (!cartContents) {
+    cartContents = [];
+  }
+  console.log(cartContents);
+  cartContents.push(data);
+  localStorage.setItem(key, JSON.stringify(cartContents));
+
+  if (cartContents.length > 0)
+  {
+   cartNotify.innerHTML = cartContents;
+   cartNotify.style.display = "initial";
+  }
 }
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
