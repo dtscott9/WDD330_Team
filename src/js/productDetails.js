@@ -15,11 +15,12 @@ export default class productDetails {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
     document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
+    setLocalStorage();
   }
 
   addToCart() {
-    this.generateCartAnimation;
-    setLocalStorage("product name", JSON.stringify(this.product.Name));
+    this.generateCartAnimation();
+    setLocalStorage("so-cart", this.product);
   }
 
   generateCartAnimation() {
