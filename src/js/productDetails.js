@@ -15,19 +15,18 @@ export default class productDetails {
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
     document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
-    setLocalStorage();
   }
 
   addToCart() {
-     // to fix the cart we need to get anything that is in the cart already.
-     let cartContents = getLocalStorage('so-cart');
-     //check to see if there was anything there
-     if(!cartContents){
-       cartContents = [];
-     }
-     // then add the current product to the list
-     cartContents.push(this.product);
-     setLocalStorage('so-cart', cartContents);
+    // to fix the cart we need to get anything that is in the cart already.
+    let cartContents = getLocalStorage('so-cart');
+    //check to see if there was anything there
+    if(!cartContents){
+      cartContents = [];
+    }
+    // then add the current product to the list
+    cartContents.push(this.product);
+    setLocalStorage('so-cart', cartContents);
     //setLocalStorage("product name", JSON.stringify(this.product.Name));
     const productCount = cartContents.length;
     const cartNotify = document.querySelector(".cart_notify");
@@ -37,7 +36,6 @@ export default class productDetails {
       cartNotify.style.display = "initial";
     }
     this.generateCartAnimation();
-    setLocalStorage("so-cart", this.product);
   }
 
   generateCartAnimation() {
