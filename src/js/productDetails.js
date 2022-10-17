@@ -28,6 +28,11 @@ export default class productDetails {
     cartContents.push(this.product);
     setLocalStorage('so-cart', cartContents);
     //setLocalStorage("product name", JSON.stringify(this.product.Name));
+    this.generateSuper(cartContents);
+    this.generateCartAnimation();
+  }
+
+  generateSuper(cartContents) {
     const productCount = cartContents.length;
     const cartNotify = document.querySelector(".cart_notify");
     if (productCount > 0)
@@ -35,7 +40,6 @@ export default class productDetails {
       cartNotify.innerHTML = productCount;
       cartNotify.style.display = "initial";
     }
-    this.generateCartAnimation();
   }
 
   generateCartAnimation() {
