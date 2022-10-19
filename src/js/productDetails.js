@@ -51,18 +51,17 @@ export default class productDetails {
   }
 
   renderProductDetails() {
-    return `<section class="product-detail">
-    <h3 class="product_brand">${this.product.Brand.Name}</h3>
+    return `<section class="product-detail"> <h3 class="product_brand">${this.product.Brand.Name}</h3>
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
       src="${this.product.Images.PrimaryLarge}"
       alt="${this.product.NameWithoutBrand}"
     />
-    <p class="product-card__price"><s>$${this.product.SuggestedRetailPrice}</s></p>
+    <p class="product-card__price"><s>$${this.product.FinalPrice}</s></p>
     <p class="product-discount-price">$${this.product.ListPrice}
       <span id="discount">Save: $${Math.round(
-        this.product.SuggestedRetailPrice - this.product.ListPrice)
+        this.product.FinalPrice - this.product.ListPrice)
       }</span></p>
 
     <p class="product__color">${this.product.Colors[0].ColorName}</p>

@@ -1,17 +1,15 @@
 import { renderListWithTemplate } from './utils.js';
 
-
 export default class ProductList {
     constructor(category, dataSource, listElement) {
         this.category = category;
         this.dataSource = dataSource;
         this.listElement = listElement;
-        this.products = [];
-        this.init()
     }
 
     async init() {
         const list = await this.dataSource.getData(this.category);
+        console.log(list)
         this.renderList(list);
         document.querySelector('.title').innerHTML = this.category;
     }

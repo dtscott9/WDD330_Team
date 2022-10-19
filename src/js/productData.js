@@ -9,7 +9,7 @@ function convertToJson(res) {
   }
 
 export default class ProductData {
-    constructor(categor){
+    constructor(){
     
     }
 
@@ -19,7 +19,8 @@ export default class ProductData {
     }
 
     async findProductById(id) {
-        const products = await this.getData()
-        return products.find((item) => item.Id === id);
+        //const products = await this.getData()
+        return await fetch(baseURL + `product/${id}`).then(convertToJson)
+          .then((data) => data.Result);
     }
 }
