@@ -188,6 +188,7 @@ button {
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+  text-align: left;
 }
 
 .product-grid {
