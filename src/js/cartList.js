@@ -1,4 +1,5 @@
 import { renderListWithTemplate, getLocalStorage } from './utils.js';
+import productDetails from './productDetails.js';
 
 export default class CartList {
   constructor (key, listElement) {
@@ -7,9 +8,9 @@ export default class CartList {
   }
 
   async init() {
-    
     const list = getLocalStorage(this.key);
     this.renderList(list);
+    this.getTotal();
   }
   
   prepareTemplate(template, product) {
@@ -29,5 +30,15 @@ export default class CartList {
     const template = document.getElementById('cart-card-template');
     renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
     
+  }
+
+  getTotal() {
+    let cartNum = getLocalStorage('so-cart');
+    const count = cartNum.length;
+    const cartEmpty = document.querySelector(".cart-footer hide");
+    if (!count) {
+      cartEmpty.innerHTML = count;
+      cartEmpty.style.display = "none";
+    }
   }
 }

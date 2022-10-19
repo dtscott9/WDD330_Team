@@ -56,7 +56,7 @@ export default class productDetails {
     <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Image.PrimaryLarge}"
+      src="${this.product.Images.PrimaryLarge}"
       alt="${this.product.NameWithoutBrand}"
     />
     <p class="product-card__price"><s>$${this.product.SuggestedRetailPrice}</s></p>
