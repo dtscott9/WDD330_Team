@@ -1,5 +1,6 @@
-import { setLocalStorage, getLocalStorage } from "./utils.js";
+import { setLocalStorage, getLocalStorage, loadHeaderFooter } from "./utils.js";
 
+loadHeaderFooter();
 export default class productDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
@@ -14,7 +15,8 @@ export default class productDetails {
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     this.product = await this.dataSource.findProductById(this.productId);
     document.querySelector("main").innerHTML = this.renderProductDetails();
-    document.querySelector("#addToCart").addEventListener("click", this.addToCart.bind(this));
+    document.querySelector("#addToCart")
+            .addEventListener("click", this.addToCart.bind(this));
   }
 
   addToCart() {
@@ -50,34 +52,24 @@ export default class productDetails {
 
   renderProductDetails() {
     return `<section class="product-detail">
-    <h3 class="product_brand">${this.product.Brand.Name}
-    </h3>
-    <h2 class="divider" class="product_name">
-      ${this.product.NameWithoutBrand}
-      Ajax Tent - 3-Person, 3-Season</h2>
+    <h3 class="product_brand">${this.product.Brand.Name}</h3>
+    <h2 class="divider">${this.product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${this.product.Image}"
+      src="${this.product.Image.PrimaryLarge}"
       alt="${this.product.NameWithoutBrand}"
     />
-    <p class="product-card__price"><s>$${this.product.SuggestedRetailPrice}
-    
-    </s></p>
+    <p class="product-card__price"><s>$${this.product.SuggestedRetailPrice}</s></p>
     <p class="product-discount-price">$${this.product.ListPrice}
       <span id="discount">Save: $${Math.round(
         this.product.SuggestedRetailPrice - this.product.ListPrice)
       }</span></p>
 
-    <p class="product__color">
-      ${this.product.Colors[0].ColorName}
-    </p>
+    <p class="product__color">${this.product.Colors[0].ColorName}</p>
     <p class="product__description">
-
       ${this.product.DescriptionHtmlSimple}
-
     </p>
     <div class="product-detail__add">
-      
       <button id="addToCart" data-id="${this.product.Id}">Add to Cart</button>
     </div>
   </section>`;

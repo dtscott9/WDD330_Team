@@ -4,11 +4,9 @@ import { getParam } from './utils.js';
 import { loadHeaderFooter } from './utils.js';
 
 loadHeaderFooter();
-// import { setLocalStorage } from './utils.js';
 
-
-const dataSource = new ProductData('tents');
 const productId = getParam('product');
+const dataSource = new ProductData();
 
 const product = new productDetails(productId, dataSource);
 product.init();
