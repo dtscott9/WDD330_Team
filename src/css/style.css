@@ -286,6 +286,22 @@ button {
   color: red;
 }
 
+/* Checkout Page */
+form {
+  display: grid;
+  width: 300px;
+  margin: 15px;
+}
+
+form label {
+  margin: 15px 0 0;
+}
+
+form input {
+  height: 30px;
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
