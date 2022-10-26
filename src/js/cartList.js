@@ -11,6 +11,7 @@ export default class CartList {
     const list = getLocalStorage(this.key);
     this.renderList(list);
     this.getTotal();
+    this.display_total();
   }
   
   prepareTemplate(template, product) {
@@ -56,5 +57,15 @@ export default class CartList {
       cartEmpty.innerHTML = count;
       cartEmpty.style.display = "none";
     }
+  }
+
+  display_total() {
+    const totalElement = document.querySelector(".cart-total");
+    let cartItems = getLocalStorage('so-cart');
+    var total = 0;
+    cartItems.forEach((item) => {
+      total += item.ListPrice
+    });
+    totalElement.textContent += `$${total}`;
   }
 }
