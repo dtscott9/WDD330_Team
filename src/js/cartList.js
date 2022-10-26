@@ -84,6 +84,6 @@ export default class CartList {
     cartItems.forEach((item) => {
       total += item.ListPrice
     });
-    totalElement.textContent += `$${total}`;
+    totalElement.textContent += `$${total.toFixed(2)}`;
   }
 }
