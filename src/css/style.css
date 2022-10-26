@@ -133,6 +133,15 @@ button {
   text-decoration: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+#checkoutButton {
+  margin: 1em;
+  text-align: center;
+}
+
 @keyframes wobble {
   0% { transform: translateX(0%); } 
   15% { transform: translateX(-25%) rotate(-5deg); } 
