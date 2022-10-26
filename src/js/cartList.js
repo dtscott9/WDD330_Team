@@ -64,6 +64,8 @@ export default class CartList {
     
   }
 
+  
+
   getTotal() {
     let cartNum = getLocalStorage('so-cart');
     const count = cartNum.length;
