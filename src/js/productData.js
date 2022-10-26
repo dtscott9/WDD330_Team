@@ -9,7 +9,7 @@ function convertToJson(res) {
   }
 
 export default class ProductData {
-    constructor(){
+    constructor() {
     
     }
 

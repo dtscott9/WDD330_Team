@@ -20,11 +20,15 @@ export default class CartList {
     template.querySelector('.cart-card__image img').alt += product.Name;
     template.querySelector('.card__name').textContent = product.Name;
     // template.querySelector('.cart-card__color').textContent = product.Colors[0].ColorName;
+    const itemId = product.Id;
+    const cart = getLocalStorage("so-cart")
+    var quantity = 0;
+    const quantityLabel = template.querySelector(".cart-card__quantity")
     template.querySelector('.cart-card__price').textContent += product.FinalPrice; 
     template.querySelector(".cart-card__remove").addEventListener("click", () => {
-      const itemId = product.Id;
+      
       console.log(itemId);
-      const cart = getLocalStorage("so-cart")
+    
       for (let i=0; i < cart.length; i++) {
         if (cart[i].Id == itemId) {
           console.log("hello")
@@ -35,16 +39,28 @@ export default class CartList {
         }
       }
     })
+
+    for (let i=0; i < cart.length; i++) {
+      if (cart[i].Id == itemId) {
+        quantity +=1
+        quantityLabel.textContent = quantity
+      }
+    }
+
+
     return template;
   }
 
 
   renderList(list) {
+
     // make sure the list is empty
     this.listElement.innerHTML = '';
     //get the template
     const template = document.getElementById('cart-card-template');
     renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
+
+   
     
   }
 

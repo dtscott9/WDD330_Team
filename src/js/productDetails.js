@@ -26,10 +26,15 @@ export default class productDetails {
     if(!cartContents){
       cartContents = [];
     }
+
+    
     // then add the current product to the list
+    
+  if (!cartContents.includes(this.productId)) {
     cartContents.push(this.product);
     setLocalStorage('so-cart', cartContents);
-
+  }
+    
     this.generateSuper(cartContents);
     this.generateCartAnimation();
   }
