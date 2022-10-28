@@ -1,4 +1,32 @@
-import { getLocalStorage } from "./utils";
+import { getLocalStorage } from "./utils.js";
+import ExternalServices from "./ExternalServices.js"
+
+const services = new ExternalServices();
+
+
+function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
+
+function packageItems(items) {
+  const simplifiedItems = items.map((item) => {
+    console.log(item);
+    return {
+      id: item.Id,
+      price: item.FinalPrice,
+      name: item.Name,
+      quantity: 1,
+    };
+  });
+  return simplifiedItems;
+}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -40,6 +68,27 @@ export default class CheckoutProcess {
       document.querySelector("#shippingEstimate").textContent += this.shipping;
       document.querySelector("#tax").textContent += this.tax;
       document.querySelector("#total").textContent += this.orderTotal.toFixed(2);
+    }
+
+    async checkout() {
+      // build the data object from the calculated fields, the items in the cart, and the information entered into the form
+      const formElement = document.forms["checkout"];
+      const formData = formDataToJSON(formElement);
+
+      formData.orderDate = new Date();
+      formData.orderTotal = this.orderTotal;
+      formData.tax = this.tax;
+      formData.shipping = this.shipping;
+      formData.items = packageItems(this.list);
+      
+      console.log(formData);
+      // call the checkout method in our ExternalServices module and send it our data object.
+      try {
+        const res = await services.checkout(formData);
+        console.log(res);
+      } catch(err) {
+        console.log(err);
+      }
     }
     
   }
