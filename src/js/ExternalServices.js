@@ -25,7 +25,7 @@ export default class ExternalServices {
     }
 
     async checkout(data) {
-      const URL = baseURL + "/checkout";
+      const URL = baseURL + "checkout";
       const options = {
         method: 'POST',
         headers: {
