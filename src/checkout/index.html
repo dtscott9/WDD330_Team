@@ -26,14 +26,14 @@
         <label id="state" for="state">State</label>
         <input type="text" name="state" required>
         <label id="zip" for="zip">Zip Code</label>
-        <input type="text" name="zip" required>
+        <input type="number" name="zip" maxlength="5" minlength="5" required>
         <h2>Card Info</h2>
         <label id="cardNumber" for="cardNumber">Credit/Debit Card Number</label>
-        <input type="text" name="cardNumber" required>
+        <input type="number" name="cardNumber" maxlength="16" minlenght="16" required>
         <label id="expiration" for="expiration">Expiration Date</label>
         <input type="text" name="expiration" required>
         <label id="code" for="code">Security Code</label>
-        <input type="text" name="code" required>
+        <input type="number" name="code" minlength="3" maxlength="3" required>
         <h2>Order Summary</h2>
         <h3 id="subtotal">Subtotal: $</h3>
         <h3 id="shippingEstimate">Shipping Estimate: $</h3>

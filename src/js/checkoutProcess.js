@@ -86,6 +86,9 @@ export default class CheckoutProcess {
       try {
         const res = await services.checkout(formData);
         console.log(res);
+        alert("Order was placed successfully")
+        location.href = "../index.html"
+        
       } catch(err) {
         console.log(err);
       }

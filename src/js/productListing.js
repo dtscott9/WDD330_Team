@@ -1,4 +1,4 @@
-import ProductData from './productData.js';
+import ProductData from './ExternalServices';
 import ProductList from './productList.js';
 import { loadHeaderFooter, getParam } from './utils.js';
 loadHeaderFooter();
