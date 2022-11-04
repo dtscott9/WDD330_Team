@@ -35,7 +35,5 @@ export default class ExternalServices {
       }
 
       return await fetch(URL, options).then(convertToJson);
-
-
     }
 }
