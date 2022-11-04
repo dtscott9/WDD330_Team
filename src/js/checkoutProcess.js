@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./utils.js";
-import ExternalServices from "./ExternalServices.js"
+import ExternalServices from "./ExternalServices.js";
 
 const services = new ExternalServices();
 
@@ -38,7 +38,7 @@ export default class CheckoutProcess {
       this.shipping = 10;
       this.tax = 1.06;
       this.orderTotal = 0;
-      this.init()
+      this.init();
     }
     init() {
       this.list = getLocalStorage(this.key);
@@ -47,13 +47,15 @@ export default class CheckoutProcess {
     calculateItemSummary() {
       // calculate and display the total amount of the items in the cart, and the number of items.
       console.log(this.list);
+      if (localStorage.getItem(this.key) !== null) {
       this.itemTotalCount = this.list.length;
       this.list.forEach((item) => {
 
         this.itemTotalPrice += item.ListPrice;
       })
-      this.shipping += 2 * (this.list.length - 1)
+      this.shipping += 2 * (this.list.length - 1);
       this.calculateOrdertotal();
+      }
     }
     calculateOrdertotal() {
       // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
@@ -64,7 +66,7 @@ export default class CheckoutProcess {
     }
     displayOrderTotals() {
       // once the totals are all calculated display them in the order summary page
-      document.querySelector("#subtotal").textContent += this.itemTotalPrice;
+      document.querySelector("#subtotal").textContent += this.itemTotalPrice.toFixed(2);
       document.querySelector("#shippingEstimate").textContent += this.shipping;
       document.querySelector("#tax").textContent += this.tax;
       document.querySelector("#total").textContent += this.orderTotal.toFixed(2);
@@ -86,8 +88,14 @@ export default class CheckoutProcess {
       try {
         const res = await services.checkout(formData);
         console.log(res);
+        if (localStorage.getItem(this.key) !== null) {
         alert("Order was placed successfully")
         location.href = "../index.html"
+        localStorage.clear();
+        }
+        else {
+          alert("There are no items in your cart");
+        }
         
       } catch(err) {
         console.log(err);

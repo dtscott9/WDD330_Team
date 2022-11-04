@@ -31,9 +31,9 @@ export default class CartList {
     template.querySelector('.card__name').textContent = product.Name;
     // template.querySelector('.cart-card__color').textContent = product.Colors[0].ColorName;
     const itemId = product.Id;
-    const cart = getLocalStorage("so-cart")
+    const cart = getLocalStorage("so-cart");
     var quantity = 0;
-    const quantityLabel = template.querySelector(".cart-card__quantity")
+    const quantityLabel = template.querySelector(".cart-card__quantity");
     template.querySelector('.cart-card__price').textContent += product.FinalPrice; 
 
     // Remove from cart event listener
@@ -50,18 +50,15 @@ export default class CartList {
 
     for (let i=0; i < cart.length; i++) {
       if (cart[i].Id == itemId) {
-        quantity +=1
-        quantityLabel.textContent = quantity
+        quantity +=1;
+        quantityLabel.textContent = quantity;
       }
     }
-
 
     return template;
   }
 
-
   renderList(list) {
-
     // make sure the list is empty
     this.listElement.innerHTML = '';
     //get the template
@@ -71,8 +68,6 @@ export default class CartList {
    
     
   }
-
-  
 
   getTotal() {
     let cartNum = getLocalStorage('so-cart');
@@ -89,7 +84,7 @@ export default class CartList {
     let cartItems = getLocalStorage('so-cart');
     var total = 0;
     cartItems.forEach((item) => {
-      total += item.ListPrice
+      total += item.ListPrice;
     });
     totalElement.textContent += `$${total.toFixed(2)}`;
   }
