@@ -1,7 +1,7 @@
 import { loadHeaderFooter } from './utils.js';
 import CartList from './cartList.js';
 
-//loadHeaderFooter();
+loadHeaderFooter();
 
 const cart = new CartList('so-cart', document.querySelector('.product-list'));
 cart.init();
