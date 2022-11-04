@@ -1,5 +1,5 @@
 import { getLocalStorage } from "./utils.js";
-import ExternalServices from "./ExternalServices.js"
+import ExternalServices from "./ExternalServices.js";
 
 const services = new ExternalServices();
 
@@ -47,6 +47,7 @@ export default class CheckoutProcess {
     calculateItemSummary() {
       // calculate and display the total amount of the items in the cart, and the number of items.
       console.log(this.list);
+      if (localStorage.getItem(this.key) !== null) {
       this.itemTotalCount = this.list.length;
       this.list.forEach((item) => {
 
@@ -54,6 +55,7 @@ export default class CheckoutProcess {
       })
       this.shipping += 2 * (this.list.length - 1)
       this.calculateOrdertotal();
+      }
     }
     calculateOrdertotal() {
       // calculate the shipping and tax amounts. Then use them to along with the cart total to figure out the order total
@@ -86,8 +88,14 @@ export default class CheckoutProcess {
       try {
         const res = await services.checkout(formData);
         console.log(res);
+        if (localStorage.getItem(this.key) !== null) {
         alert("Order was placed successfully")
         location.href = "../index.html"
+        localStorage.clear();
+        }
+        else {
+          alert("There are no items in your cart");
+        }
         
       } catch(err) {
         console.log(err);
