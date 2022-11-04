@@ -38,7 +38,7 @@ export default class CheckoutProcess {
       this.shipping = 10;
       this.tax = 1.06;
       this.orderTotal = 0;
-      this.init()
+      this.init();
     }
     init() {
       this.list = getLocalStorage(this.key);
@@ -53,7 +53,7 @@ export default class CheckoutProcess {
 
         this.itemTotalPrice += item.ListPrice;
       })
-      this.shipping += 2 * (this.list.length - 1)
+      this.shipping += 2 * (this.list.length - 1);
       this.calculateOrdertotal();
       }
     }
@@ -66,7 +66,7 @@ export default class CheckoutProcess {
     }
     displayOrderTotals() {
       // once the totals are all calculated display them in the order summary page
-      document.querySelector("#subtotal").textContent += this.itemTotalPrice;
+      document.querySelector("#subtotal").textContent += this.itemTotalPrice.toFixed(2);
       document.querySelector("#shippingEstimate").textContent += this.shipping;
       document.querySelector("#tax").textContent += this.tax;
       document.querySelector("#total").textContent += this.orderTotal.toFixed(2);
