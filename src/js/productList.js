@@ -21,7 +21,13 @@ export default class ProductList {
         template.querySelector('img').alt += product.Name;
         template.querySelector('.card__brand').textContent = product.Brand.Name;
         template.querySelector('.card__name').textContent = product.NameWithoutBrand;
-        template.querySelector('.product-card__price').textContent += product.FinalPrice;  
+        template.querySelector('.product-card__price').textContent += product.FinalPrice;
+        const description = template.querySelector('.card__description');
+        description.innerHTML = product.DescriptionHtmlSimple;  
+        const popup = template.querySelector('.card__description_div');
+        template.querySelector('.card__details').addEventListener("click", () => {
+            popup.classList.toggle("remove");
+        })
         return template;
     }
  
