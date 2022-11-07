@@ -1,13 +1,15 @@
 import { renderListWithTemplate, getLocalStorage, setLocalStorage } from './utils.js';
-import productDetails from './productDetails.js';
 
 export default class CartList {
+
   constructor (key, listElement) {
     this.key = key;
     this.listElement = listElement;
+    this.productIdList = [];
   }
 
   async init() {
+    this.productIdList = [];
     const list = getLocalStorage(this.key);
     this.renderList(list);
     this.getTotal();
@@ -15,6 +17,13 @@ export default class CartList {
   }
   
   prepareTemplate(template, product) {
+    if (this.productIdList.includes(product.Id)) {
+      // If the product has already been displayed, return
+      template = "";
+      return template;
+
+    } 
+    this.productIdList.push(product.Id);
     console.log(product);
     template.querySelector('.cart-card__image img').src =  product.Images.PrimarySmall;
     // template.querySelector(".cart-card__image img").src = product.Image;
@@ -26,16 +35,14 @@ export default class CartList {
     var quantity = 0;
     const quantityLabel = template.querySelector(".cart-card__quantity");
     template.querySelector('.cart-card__price').textContent += product.FinalPrice; 
+
+    // Remove from cart event listener
     template.querySelector(".cart-card__remove").addEventListener("click", () => {
-      
-      console.log(itemId);
-    
+          
       for (let i=0; i < cart.length; i++) {
         if (cart[i].Id == itemId) {
-          console.log("hello");
           cart.splice(i, 1);
-          console.log(cart);
-          setLocalStorage("so-cart", cart);
+          setLocalStorage("so-cart", cart)
           location.reload();
         }
       }
@@ -56,7 +63,10 @@ export default class CartList {
     this.listElement.innerHTML = '';
     //get the template
     const template = document.getElementById('cart-card-template');
-    renderListWithTemplate(template, this.listElement, list, this.prepareTemplate);
+    renderListWithTemplate(template, this.listElement, list, this.prepareTemplate.bind(this));
+
+   
+    
   }
 
   getTotal() {
