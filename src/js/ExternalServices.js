@@ -33,7 +33,17 @@ export default class ExternalServices {
         },
         body: JSON.stringify(data)
       }
-
       return await fetch(URL, options).then(convertToJson);
+    }
+
+    async getOrder() {
+      const newUrl = baseURL+'orders';
+      const orders = {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      }
+      return await fetch(newUrl, orders).then(convertToJson);
     }
 }
