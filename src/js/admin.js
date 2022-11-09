@@ -26,8 +26,7 @@ export default class Admin {
         loginForm.appendChild(password);
         loginForm.appendChild(submitBUtton);
 
-        const res = await this.services.getOrder(this.token);
-        console.log(res)
+        
 
       }
 
@@ -39,7 +38,8 @@ export default class Admin {
       try {
         this.token = await this.services.loginRequest(creds);
         next()
-        
+        const res = await this.services.getOrder(this.token);
+        console.log(res)
       } 
       catch(err) {
         // remember this from before?

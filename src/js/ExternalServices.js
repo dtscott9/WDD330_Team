@@ -36,6 +36,15 @@ export default class ExternalServices {
       return await fetch(URL, options).then(convertToJson);
     }
 
+    async loginRequest(creds) {
+        const newUrl = baseURL+'login';
+        const login = {
+          method: 'POST',
+          headers: { email: "user1@email.com" , password: "user1" }
+        }
+        return await fetch(newUrl, login).then(convertToJson);
+    }
+
     async getOrder(token) {
       const newUrl = baseURL+'orders';
       const orders = {
