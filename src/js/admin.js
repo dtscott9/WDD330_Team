@@ -30,11 +30,16 @@ export default class Admin {
         loginForm.addEventListener("submit", (event) => {
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
-            this.login({email, password})
+            this.login({email, password}, this.showOrders.bind(this))
         });
 
         
 
+      }
+
+      async showOrders() {
+        const res = await this.services.getOrder(this.token);
+        console.log(res.orderDate)
       }
 
       async login(creds, next) {
@@ -42,16 +47,15 @@ export default class Admin {
       // This makes it much more flexible...
       // there could be many different things the user wants to do after logging in...
       // this allows us that flexibility without having to write a bunch of login methods
-      console.log(creds);
+    
       try {
         this.token = await this.services.loginRequest(creds);
         next()
-        const res = await this.services.getOrder(this.token);
-        console.log(res)
+        
       } 
       catch(err) {
         // remember this from before?
-        alertMessage(err.message.message);
+        console.log(err.message);
       }
     }
 }
