@@ -36,7 +36,7 @@ export default class ExternalServices {
       return await fetch(URL, options).then(convertToJson);
     }
 
-    async getOrder() {
+    async getOrder(token) {
       const newUrl = baseURL+'orders';
       const orders = {
         method: 'GET',

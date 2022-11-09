@@ -2,6 +2,8 @@ import { loadHeaderFooter } from './utils.js';
 import ExternalServices from "./ExternalServices.js"
 loadHeaderFooter();
 
+
+
 export default class Admin {
     constructor(outputSelector) {
         this.mainElement = document.querySelector(outputSelector);
@@ -10,7 +12,7 @@ export default class Admin {
         this.showLogin();
       }
 
-      showLogin() {
+      async showLogin() {
         const loginForm = document.querySelector(".login");
         const email = document.createElement("input");
         email.setAttribute("type", "email");
@@ -24,6 +26,9 @@ export default class Admin {
         loginForm.appendChild(password);
         loginForm.appendChild(submitBUtton);
 
+        const res = await this.services.getOrder(this.token);
+        console.log(res)
+
       }
 
       async login(creds, next) {
@@ -34,6 +39,7 @@ export default class Admin {
       try {
         this.token = await this.services.loginRequest(creds);
         next()
+        
       } 
       catch(err) {
         // remember this from before?
