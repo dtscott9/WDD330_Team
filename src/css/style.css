@@ -34,6 +34,11 @@ header {
   justify-content: space-between;
   padding: 0 10px;
 }
+
+header form {
+  display: inline;
+}
+
 .logo {
   line-height: 60px;
   width: 245px;
