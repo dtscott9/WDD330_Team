@@ -37,8 +37,8 @@ export default class ExternalServices {
     }
 
     async loginRequest(creds) {
-        const newURL = baseURL;
-        const options = {
+        const newUrl = baseURL+'login';
+        const login = {
           method: 'POST',
           headers: {'Content-Type': 'application/json'
         },

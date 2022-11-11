@@ -67,8 +67,7 @@ export default class Admin {
     
       try {
         this.token = await this.services.loginRequest(creds);
-        console.log(this.token);
-        next();
+        next()
         
       } 
       catch(err) {
