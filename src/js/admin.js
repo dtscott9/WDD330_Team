@@ -30,7 +30,7 @@ export default class Admin {
         loginForm.addEventListener("submit", (event) => {
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
-            this.login({email, password}, this.showOrders.bind(this))
+            this.login({"email": email, "password": password}, this.showOrders.bind(this))
         });
 
         
@@ -39,7 +39,7 @@ export default class Admin {
 
       async showOrders() {
         const res = await this.services.getOrder(this.token);
-        console.log(res.orderDate)
+        console.log(res);
       }
 
       async login(creds, next) {
@@ -50,7 +50,8 @@ export default class Admin {
     
       try {
         this.token = await this.services.loginRequest(creds);
-        next()
+        console.log(this.token);
+        next();
         
       } 
       catch(err) {
