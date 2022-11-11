@@ -44,7 +44,8 @@ export default class ExternalServices {
         },
         body: JSON.stringify(creds)
       }
-        return await fetch(newUrl, login).then(convertToJson).accessToken;
+        const response = await fetch(newUrl, login).then(convertToJson);
+        return response.accessToken;
     }
 
     async getOrder(token) {

@@ -30,7 +30,7 @@ export default class Admin {
         loginForm.addEventListener("submit", (event) => {
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
-            this.login({email, password}, this.showOrders.bind(this))
+            this.login({"email": email, "password": password}, this.showOrders.bind(this))
         });
 
         
@@ -38,8 +38,25 @@ export default class Admin {
       }
 
       async showOrders() {
-        const res = await this.services.getOrder(this.token);
-        console.log(res.orderDate)
+        try {
+          const orders = await this.services.getOrder(this.token);
+          orders.forEach(order => {
+            const results = document.querySelector(".Order_Results");
+            const name = document.createElement("h2");
+            name.innerHTML = order.fname + ' ' + order.lname;
+            const total = document.createElement('h3');
+            total.innerHTML = order.orderTotal;
+
+            results.appendChild(name);
+            results.appendChild(total);
+          });
+          //this.mainElement.innerHTML = orderHtml();
+          //const parent = document.querySelector('#orders tbody');
+          // why not a template like we have done before?  The markup here was simple enough that I didn't think it worth the overhead...but a template would certainly work!
+          //parent.innerHTML = orders.map(order=> `<tr><td>${order.id}</td><td>${new Date(order.orderDate).toLocaleDateString('en-US')}</td><td>${order.items.length}</td><td>${order.orderTotal}</td></tr>`).join('');
+        } catch(err) {
+          console.log(err);
+        }
       }
 
       async login(creds, next) {
