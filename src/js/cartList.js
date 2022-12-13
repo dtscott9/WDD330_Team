@@ -1,3 +1,4 @@
+import { doc } from 'prettier';
 import { renderListWithTemplate, getLocalStorage, setLocalStorage } from './utils.js';
 
 export default class CartList {
@@ -34,6 +35,7 @@ export default class CartList {
     const cart = getLocalStorage("so-cart");
     var quantity = 0;
     const quantityLabel = template.querySelector(".cart-card__quantity");
+    const price = template.querySelector('.cart-card__price');
     template.querySelector('.cart-card__price').textContent += product.FinalPrice; 
 
     // Remove from cart event listener
@@ -52,8 +54,33 @@ export default class CartList {
       if (cart[i].Id == itemId) {
         quantity +=1;
         quantityLabel.textContent = quantity;
+        
+
       }
     }
+    const plusButton = template.querySelector(".addItem");
+    plusButton.addEventListener("click", () => {
+      for (let i=0; i < cart.length; i++) {
+        if (cart[i].Id == itemId) {
+          quantity +=1;
+          quantityLabel.textContent = quantity;
+          price.textContent = "$" + quantity * cart[i].FinalPrice;
+        }
+      }
+    });
+
+    const minusButton = template.querySelector(".subtractItem");
+    minusButton.addEventListener("click", () => {
+      for (let i=0; i < cart.length; i++) {
+        if (cart[i].Id == itemId) {
+          if (quantity > 1) {
+          quantity -=1;
+          quantityLabel.textContent = quantity;
+          price.textContent = "$" + quantity * cart[i].FinalPrice;
+          }
+        }
+      }
+    });
 
     return template;
   }
@@ -64,10 +91,10 @@ export default class CartList {
     //get the template
     const template = document.getElementById('cart-card-template');
     renderListWithTemplate(template, this.listElement, list, this.prepareTemplate.bind(this));
-
-   
     
   }
+
+ 
 
   getTotal() {
     let cartNum = getLocalStorage('so-cart');
